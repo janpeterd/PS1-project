@@ -1,0 +1,42 @@
+Beste gidsen
+
+
+Er is zonet een nieuwe aanvraag gedaan voor een museumbezoek op {{new_object.datum}} om {{new_object.tijdstip}}.
+
+Details:
+-	boekingsnummer: {{new_object.id}}
+-	gekozen module: {{new_object.module}}
+-	datum: {{new_object.datum}}
+-	tijdstip: {{new_object.tijdstip}}
+-	naam: {{new_object.groepsnaam}}
+-	contactpersoon: {{new_object.voornaamContactpersoon}} {{chosen_visit.familienaamContactpersoon|upper}}
+-	e-mailadres: {{new_object.emailContactpersoon}}
+-	telefoonnummer: {{new_object.telContactpersoon}}
+{% if new_object.isSchool %}
+-	school: ja
+-	onderwijsniveau: {{new_object.onderwijsniveau}}
+-	studierichting: {{new_object.studierichting}}
+-	(studie)jaar: {{new_object.studiejaar}}
+{% else %}
+-	school: nee
+{% endif %}
+-	aantal personen: {{new_object.aantalPersonen}}
+{% if new_object.heeftBeperkteMobiliteit %}
+-	beperkte mobiliteit: ja
+{% else %}
+-	beperkte mobiliteit: nee
+{% endif %}
+{% if new_object.lunchVooruitzicht %}
+-	eigen lunch in 't Vooruitzicht: ja
+{% else %}
+-	eigen lunch in 't Vooruitzicht: nee
+{% endif %}
+
+Geef jezelf op als gids via {{assign_guide_link}}.
+
+Wanneer je na een bespreking met de andere gidsen zeker weet dat er niemand beschikbaar is om dit bezoek te gidsen, kun je op onderstaande link klikken om dat aan de aanvrager te laten weten. Dit gebeurt automatisch als er na 5 dagen nog geen gids is toegewezen voor dit bezoek.
+{{domain}}/archive-and-notify/{{new_object.id}}
+
+
+Met vriendelijke groeten
+Het boekingssysteem

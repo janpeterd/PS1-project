@@ -1,0 +1,55 @@
+{% load static %}
+
+<p>
+    Beste meneer/mevrouw {{chosen_visit.familienaamContactpersoon}}<br>
+</p>
+<br>
+
+<p>
+    De gids die u zal ontvangen voor uw museumbezoek is gewijzigd naar {{currently_logged_in_guide.name}}. Verder verandert er niets aan uw boeking.
+</p>
+
+<p>
+    De details van uw bezoek:
+    <ul>
+        <li>boekingsnummer: {{chosen_visit.id}}</li>
+        <li>gekozen module: {{chosen_visit.module}}</li>
+        <li>datum: {{chosen_visit.datum}}</li>
+        <li>tijdstip: {{chosen_visit.tijdstip}}</li>
+        <li>naam: {{chosen_visit.groepsnaam}}</li>
+        <li>contactpersoon: {{chosen_visit.voornaamContactpersoon}} {{chosen_visit.familienaamContactpersoon|upper}}</li>
+        <li>e-mailadres: {{chosen_visit.emailContactpersoon}}</li>
+        <li>telefoonnummer: {{chosen_visit.telContactpersoon}}</li>
+        {% if chosen_visit.isSchool %}
+            <li>school: ja</li>
+            <li>onderwijsniveau: {{chosen_visit.onderwijsniveau}}</li>
+            <li>studierichting: {{chosen_visit.studierichting}}</li>
+            <li>(studie)jaar: {{chosen_visit.studiejaar}}</li>
+        {% else %}
+            <li>school: nee</li>
+        {% endif %}
+        <li>aantal personen: {{chosen_visit.aantalPersonen}}</li>
+        {% if chosen_visit.heeftBeperkteMobiliteit %}
+            <li>beperkte mobiliteit: ja</li>
+        {% else %}
+            <li>beperkte mobiliteit: nee</li>
+        {% endif %}
+        {% if chosen_visit.lunchVooruitzicht %}
+            <li>eigen lunch in 't Vooruitzicht: ja</li>
+        {% else %}
+            <li>eigen lunch in 't Vooruitzicht: nee</li>
+        {% endif %}
+    </ul>
+</p>
+<p>
+    We kijken uit naar uw komst!
+</p>
+<br>
+
+<p>
+    Met vriendelijke groeten<br>
+    Bezoekerscentrum Pas-sage, OPZ Geel<br>
+    <a href="mailto:pas-sage@opzgeel.be">pas-sage@opzgeel.be</a><br>
+    <a href="tel:014579245">014 57 92 45</a>
+    
+</p>

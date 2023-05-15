@@ -1,0 +1,12 @@
+Beste meneer/mevrouw {{new_object.familienaamContactpersoon}}
+
+
+Bedankt voor uw interesse in Bezoekerscentrum Pas-sage. We hebben uw aanvraag voor een bezoek op {{new_object.date}} om {{new_object.time}} goed ontvangen. Het boekingsnummer van uw aanvraag is {{new_object.id}}.
+
+Binnen de vijf dagen laten we u weten of er op dat moment een gids beschikbaar is voor een rondleiding.
+
+Indien u deze aanvraag wilt annuleren of wijzigen, kunt u een e-mail sturen naar pas-sage@opzgeel.be met vermelding van het boekingsnummer.
+
+
+Met vriendelijke groeten
+Bezoekerscentrum Pas-sage, OPZ Geel

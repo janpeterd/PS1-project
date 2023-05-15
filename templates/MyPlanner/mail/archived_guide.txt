@@ -1,0 +1,10 @@
+Beste gidsen
+
+
+Op {{chosen_visit.tijdstipAanvraag}} werd een aanvraag gedaan door {{chosen_visit.voornaamContactpersoon}} {{chosen_visit.familienaamContactpersoon|upper}} om Bezoekerscentrum Pas-Sage te bezoeken. De aanvraag werd afgewezen omdat er geen gids beschikbaar is of omdat die gids niet binnen de vijf dagen werd toegewezen.
+
+De aanvrager ontvangt een e-mail om hem/haar uit te nodigen een nieuwe aanvraag in te dienen.
+
+
+Met vriendelijke groeten
+Het boekingssysteem

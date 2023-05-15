@@ -1,0 +1,46 @@
+{% extends 'MyPlanner/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'MyPlanner/css/visitorform.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container py-5">
+    <form id="visitorform" method="POST">
+
+        <fieldset>
+            <legend id="legend">Veranderen bezoeksgegevens</legend>
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div{% with classes=field.css_classes %}{% if classes %} class="{{ classes }}" {% endif %}{% endwith %}>
+                {{ field.label_tag }}
+                {% if field.field.required %}<span class="required">*</span>{% endif %}
+                {% if field.help_text %}
+                <p class="helptext">{{ field.help_text|safe }}</p>
+                {% endif %}
+                {{ field }}
+                {% if field.errors %}
+                <div id="bootstrap_error" class="alert alert-danger">
+                    {% for error in field.errors %}
+                    Tijdstip: {{ error|escape }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+</div>
+{% endfor %}
+<input type="submit" class="btn btn-primary my-5" value="Indienen">
+</form>
+</div>
+
+
+<script>
+    window.addEventListener("load", () => {
+        if (document.querySelector('#bootstrap_error')) {
+            document.querySelector('#bootstrap_error').scrollIntoView();
+        }
+    });
+</script>
+{% endblock %}

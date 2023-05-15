@@ -1,0 +1,37 @@
+Beste gidsen
+
+
+{{linked_guide.voornaam}} {{linked_guide.familienaam|upper}} is toegewezen aan volgend bezoek:
+-	boekingsnummer: {{chosen_visit.id}}
+-	gekozen module: {{chosen_visit.module}}
+-	datum: {{chosen_visit.datum}}
+-	tijdstip: {{chosen_visit.tijdstip}}
+-	naam: {{chosen_visit.groepsnaam}}
+-	contactpersoon: {{chosen_visit.voornaamContactpersoon}} {{chosen_visit.familienaamContactpersoon|upper}}
+-	e-mailadres: {{chosen_visit.emailContactpersoon}}
+-	telefoonnummer: {{chosen_visit.telContactpersoon}}
+{% if chosen_visit.isSchool %}
+-	school: ja
+-	onderwijsniveau: {{chosen_visit.onderwijsniveau}}
+-	studierichting: {{chosen_visit.studierichting}}
+-	(studie)jaar: {{chosen_visit.studiejaar}}
+{% else %}
+-	school: nee
+{% endif %}
+-	aantal personen: {{chosen_visit.aantalPersonen}}
+{% if chosen_visit.heeftBeperkteMobiliteit %}
+-	beperkte mobiliteit: ja
+{% else %}
+-	beperkte mobiliteit: nee
+{% endif %}
+{% if chosen_visit.lunchVooruitzicht %}
+-	eigen lunch in 't Vooruitzicht: ja
+{% else %}
+-	eigen lunch in 't Vooruitzicht: nee
+{% endif %}
+
+De gids kan nog gewijzigd worden op de volgende pagina: {{domain}}/bezoek/{{chosen_visit.id}}.
+
+
+Met vriendelijke groeten
+Het boekingssysteem

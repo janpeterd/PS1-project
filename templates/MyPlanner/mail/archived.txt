@@ -1,0 +1,12 @@
+Beste meneer/mevrouw {{chosen_visit.familienaamContactpersoon}}
+
+
+Op {{chosen_visit.tijdstipAanvraag}} deed u een aanvraag om Bezoekerscentrum Pas-sage te bezoeken. Helaas is er geen gids beschikbaar op het gevraagde moment.
+
+We nodigen u graag uit om een nieuwe aanvraag in te dienen via {{domain}}.
+
+Bedankt voor uw begrip en hopelijk tot snel!
+
+
+Met vriendelijke groeten
+Bezoekerscentrum Pas-sage, OPZ Geel

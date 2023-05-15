@@ -1,0 +1,146 @@
+{% extends "MyPlanner/base.html" %}
+
+{% load static %}
+{% block stylesheets %}
+<link href="{% static 'MyPlanner/css/sortable.min.css' %}" rel="stylesheet" />
+<link href="{% static 'MyPlanner/css/all-visits.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'MyPlanner/css/visitorform.css' %}">
+<script src="{% static 'MyPlanner/js/sortable.min.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+
+    <h2>Wanneer?</h2>
+    <p id="dateandtime" class="rounded">
+        {{ chosen_visit.datum }} &mdash; {{ chosen_visit.tijdstip }}
+    </p>
+
+    <h2>Info over groep {{ chosen_visit.id }}: </h2>
+
+    <table id="grouptable" class="table-sm">
+        <tr>
+            <th>Naam groep</th>
+            <td>{{ chosen_visit.groepsnaam }}</td>
+        </tr>
+        <tr>
+            <th>Naam contactpersoon</th>
+            <td>{{ chosen_visit.voornaamContactpersoon }} {{ chosen_visit.familienaamContactpersoon }}</td>
+        </tr>
+        <tr>
+            <th>E-mail contactpersoon</th>
+            <td><a href="mailto:{{  chosen_visit.emailContactpersoon }}">{{ chosen_visit.emailContactpersoon }}</a></td>
+        </tr>
+        <tr>
+            <th>Telefoon contactpersoon</th>
+            <td><a href="tel:{{  chosen_visit.telContactpersoon }}">{{ chosen_visit.telContactpersoon }}</a></td>
+        </tr>
+        <tr>
+            <th>Aantal personen</th>
+            <td>{{chosen_visit.aantalPersonen}}</td>
+        </tr>
+
+        <tr>
+            <th>Toegewezen gids</th>
+            <td>{{chosen_visit.toegewezenGids}}</td>
+        </tr>
+
+        {% if chosen_visit.heeftBeperkteMobiliteit %}
+        <tr>
+            <th>Beperkte mobiliteit?</th>
+            <td>ja</td>
+        </tr>
+        {% else %}
+        <tr>
+            <th>Beperkte mobiliteit?</th>
+            <td>nee</td>
+        </tr>
+        {% endif %}
+
+        <tr>
+            <th>Eigen lunch in't Vooruitzicht</th>
+            {% if chosen_visit.lunchVooruitzicht %}
+            <td>ja</td>
+            {% else %}
+            <td>nee</td>
+            {% endif %}
+        </tr>
+
+        <tr>
+            <th>Gekozen module</th>
+            <td>{{chosen_visit.module}}</td>
+        </tr>
+
+        {% if chosen_visit.isSchool %}
+        <tr>
+            <th>School?</th>
+            <td>ja</td>
+        </tr>
+        <tr>
+            <th>Studiejaar</th>
+            <td>{{chosen_visit.studiejaar}}</td>
+        </tr>
+        <tr>
+            <th>Onderwijsniveau</th>
+            <td>{{chosen_visit.onderwijsniveau}}</td>
+        </tr>
+        <tr>
+            <th>studierichting</th>
+            <td>{{chosen_visit.studierichting}}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <th>School?</th>
+            <td>nee</td>
+        </tr>
+        {% endif %}
+
+    </table>
+
+    <h2>Vragen of opmerkingen</h2>
+    <div style="max-width: 90%; margin: auto;">
+        <p>
+            {% if chosen_visit.vragenOfOpmerkingen %}
+            {{chosen_visit.vragenOfOpmerkingen}}
+            {% else %}
+            Geen vragen of opmerkingen
+            {% endif %}
+        </p>
+    </div>
+
+</div>
+
+<div class="container-lg">
+    <h2>Verander gids</h2>
+    <form id="visitorform" method="POST">
+        <fieldset>
+            <p>Hieronder kan je de gids voor het bezoek aanpassen, indien nodig.</p>
+            <p>Op dit moment is de toegewezen gids: <br><strong>{{ chosen_visit.toegewezenGids }}</strong></p>
+            <p>Na het veranderen van de gids, zullen <strong>alle</strong> gidsen een <strong>e-mail</strong> ontvangen
+                ter informatie.</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button id="submitGuide" type="submit" class="btn btn-primary"
+                onclick="return confirm('Weet je zeker dat je de huidige gids: \'{{ chosen_visit.toegewezenGids }}\', wil veranderen?');">Verander</button>
+        </fieldset>
+    </form>
+</div>
+
+<aside id="archive_del_box">
+    <p class="helptext" id="edit_visit">
+        <a href="/bezoek-bewerken/{{ chosen_visit.id }}"><i>Bewerk</i> dit bezoek</a>
+    </p>
+    <p class="helptext" id="archive">
+        <a href="/archive-and-notify/{{ chosen_visit.id }}"><i>Archiveer</i> dit bezoek</a>
+    </p>
+    <!-- only show delete if visit is already archived -->
+    {% if chosen_visit.gearchiveerd %}
+    <p class="helptext" id="delete">
+        <a href="/bezoek-verwijderen/{{ chosen_visit.id }}"
+            onclick="return confirm('Weet je zeker dat je de huidige gids: dit bezoek definitief wil verwijderen?')"><i>Verwijder</i>
+            dit bezoek</a>
+    </p>
+    {% endif %}
+</aside>
+{% endblock %}

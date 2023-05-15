@@ -1,0 +1,18 @@
+{% extends 'MyPlanner/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'MyPlanner/css/visitorform.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container py-5">
+    <h1>Nieuwe gids aanmaken</h1>
+    <form id="visitorform" method="POST" class="my-5">
+
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" name="submit" value="Aanmaken" />
+    </form>
+</div>{% endblock %}

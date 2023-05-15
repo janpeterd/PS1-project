@@ -1,0 +1,31 @@
+{% load static %}
+{% block content %}
+<p>
+    Beste meneer/mevrouw {{new_object.familienaamContactpersoon}}<br>
+</p>
+<br>
+
+<p>
+    Bedankt voor uw interesse in Bezoekerscentrum Pas-sage. We hebben uw aanvraag voor een bezoek op
+    {{new_object.datum}} om {{new_object.tijdstip}} goed ontvangen. Het boekingsnummer van uw aanvraag is
+    {{new_object.id}}.
+</p>
+
+<p>
+    Binnen de vijf dagen laten we u weten of er op dat moment een gids beschikbaar is voor een rondleiding.
+</p>
+
+<p>
+    Indien u deze aanvraag wilt annuleren of wijzigen, kunt u een e-mail sturen naar <a
+        href="mailto:pas-sage@opzgeel.be">pas-sage@opzgeel.be</a> met vermelding van het boekingsnummer.
+</p>
+
+<br>
+<p>
+    Met vriendelijke groeten<br>
+    Bezoekerscentrum Pas-sage, OPZ Geel<br>
+    <a href="mailto:pas-sage@opzgeel.be">pas-sage@opzgeel.be</a><br>
+    <a href="tel:014579245">014 57 92 45</a>
+
+</p>
+{% endblock %}

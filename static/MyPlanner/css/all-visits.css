@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Condensed&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+main {
+  background-color: #f4f5f6;
+  margin-left: 30px;
+  margin-right: 30px;
+  overflow-x: scroll;
+}
+
+h1,
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  color: #217998;
+  padding: 15px;
+  margin: 5px;
+}
+
+th {
+  background-color: #217998 !important;
+  font-weight: bold !important;
+  padding: 15px !important;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.helptext {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  margin: 5px;
+}
+
+.helptext a {
+  color: #217998;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bold;
+}
+
+strong {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+i {
+  font-style: italic;
+  font-weight: bold;
+}
+
+td:first-child a {
+  display: block;
+  padding: 10px !important;
+  width: 40px;
+  height: 40px;
+  background-color: #217998;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+td:first-child a:hover {
+  background-color: #fff;
+  color: #217998;
+}

@@ -1,0 +1,39 @@
+Beste meneer/mevrouw {{chosen_visit.familienaamContactpersoon}}
+
+
+De gids die u zal ontvangen voor uw museumbezoek is gewijzigd naar {{currently_logged_in_guide.name}}. Verder verandert er niets aan uw boeking.
+
+De details van uw bezoek:
+-    boekingsnummer: {{chosen_visit.id}}
+-    gekozen module: {{chosen_visit.module}}
+-    datum: {{chosen_visit.datum}}
+-    tijdstip: {{chosen_visit.tijdstip}}
+-    naam: {{chosen_visit.groepsnaam}}
+-    contactpersoon: {{chosen_visit.voornaamContactpersoon}} {{chosen_visit.familienaamContactpersoon|upper}}
+-    e-mailadres: {{chosen_visit.emailContactpersoon}}
+-    telefoonnummer: {{chosen_visit.telContactpersoon}}
+{% if chosen_visit.isSchool %}
+-    school: ja
+-    onderwijsniveau: {{chosen_visit.onderwijsniveau}}
+-    studierichting: {{chosen_visit.studierichting}}
+-    studiejaar: {{chosen_visit.studiejaar}}
+{% else %}
+-    school: nee
+{% endif %}
+-    aantal personen: {{chosen_visit.aantalPersonen}}
+{% if chosen_visit.heeftBeperkteMobiliteit %}
+-    beperkte mobiliteit: ja
+{% else %}
+-    beperkte mobiliteit: nee
+{% endif %}
+{% if chosen_visit.lunchVooruitzicht %}
+-    lunch in 't Vooruitzicht: ja
+{% else %}
+-    lunch in 't Vooruitzicht: nee
+{% endif %}
+
+We kijken uit naar uw komst!
+
+
+Met vriendelijke groeten
+Bezoekerscentrum Pas-sage, OPZ Geel

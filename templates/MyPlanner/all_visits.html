@@ -1,0 +1,113 @@
+{% extends "MyPlanner/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link href="{% static 'MyPlanner/css/sortable.min.css' %}" rel="stylesheet" />
+<link href="{% static 'MyPlanner/css/all-visits.css' %}" rel="stylesheet" />
+<script src="{% static 'MyPlanner/js/sortable.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<main class="mx-3">
+
+    {% if filtered %}
+    <h1>Bezoeken van gids {{ currently_logged_in_guide.voornaam }} {{ currently_logged_in_guide.familienaam|upper }}
+    </h1>
+    <p class="helptext" style="text-align: left">
+        <a href="/bezoeken">Bekijk alle bezoeken (van alle gidsen)</a>
+    </p>
+    {% else %}
+    <h1>Alle bezoeken</h1>
+    <p class="helptext" style="text-align: left">
+        <a href="/filter-bezoeken">Bekijk enkel uw eigen bezoeken.</a>
+    </p>
+    {% endif %}
+    <p class="helptext" style="text-align: left;">
+        Alle bezoeken worden automatisch gesorteerd op datum en tijd, van nieuw naar oud.<br>
+        U kan op de kolomkoppen klikken om de tabel te sorteren op een andere kolom.
+    </p>
+    <p class="helptext" style="text-align: left;">
+        Bekijk een gedetailleerdere weergave van een bepaalde boeking door te klikken op de knop met de groepsnummer
+        onder de kolom <i>ID</i>.
+    </p>
+    {# javascript sorting code: https://github.com/tofsjonas/sortable #}
+
+    <table class="sortable asc table table-striped table-hover table-sm py-md-5 my-md-5">
+        <thead>
+            <th data-sortable="true">ID</th>
+            <th id="default-sort" data-sortable="true" data-sorter="datesSorter">Datum, tijdstip</th>
+            <th data-sortable="true">Naam groep</th>
+            <th data-sortable="true">Naam contactpersoon</th>
+            <th data-sortable="true">E-mail contactpersoon</th>
+            <th data-sortable="true">Telefoon contactpersoon</th>
+            <th data-sortable="true">Aantal groepsleden</th>
+            <th data-sortable="true">Toegewezen gids</th>
+            <th data-sortable="true">Eigen eigen lunch in 't Vooruitzicht</th>
+            <th data-sortable="true">Beperkte mobiliteit?</th>
+            <th data-sortable="true">Gekozen module</th>
+            <th data-sortable="true">School?</th>
+
+
+        </thead>
+        <tbody>
+            {% for visit in all_visits %}
+            <tr>
+                <td><a href="/bezoek/{{ visit.id }}">{{ visit.id }}</a></td>
+                <td data-sort={{ visit.datum|date:"U"}}{{ visit.tijdstip|time:"H" }}{{ visit.time|time:"M"}}>
+                    {{visit.datum|date:"d/m/Y" }} {{ visit.tijdstip }}</td>
+                <td>{{ visit.groepsnaam }}</td>
+                <td>{{ visit.voornaamContactpersoon }} {{ visit.familienaamContactpersoon }}</td>
+                <td>{{ visit.emailContactpersoon }}</td>
+                <td>{{ visit.telContactpersoon }}</td>
+                <td>{{ visit.aantalPersonen }}</td>
+                <td>{{ visit.toegewezenGids }}</td>
+                {% if visit.lunchVooruitzicht %}
+                <td>ja</td>
+                {% else %}
+                <td>nee</td>
+                {% endif %}
+                {% if visit.heeftBeperkteMobiliteit %}
+                <td>ja</td>
+                {% else %}
+                <td>nee</td>
+                {% endif %}
+
+                <td>{{ visit.module }}</td>
+                {% if visit.isSchool %}
+                <td>ja</td>
+                {% else %}
+                <td>nee</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <p class="helptext" style="text-align: left;">
+        Wanneer een nieuw bezoek aangevraagd wordt door een groep, wordt er een mail naar alle gidsen verzonden.
+        Als niemand zich opgeeft om te gidsen tot <i>5 dagen</i> na de aanvraag, zal het bezoek <i>gearchiveerd</i>
+        worden en ontvangt de contactpersoon een mail met de vraag om een nieuw tijdstip te kiezen.
+        <br>
+        Een bezoek kan ook manueel gearchiveerd worden door een gids, via een link in de mail die hij/zij ontvangt.
+    </p>
+
+    <aside>
+        <p class="helptext">
+            Bekijk alle gearchiveerde bezoeken
+            <a href="/archief-bezoeken/">hier</a>.
+        </p>
+    </aside>
+
+</main>
+<script>
+    // Click on the default sort column to sort the table
+    window.addEventListener('load', function () {
+        const el = document.getElementById('default-sort')
+        if (el) {
+            el.click()
+        }
+    })
+</script>
+
+{% endblock %}

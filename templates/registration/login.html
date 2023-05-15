@@ -1,0 +1,46 @@
+{% extends 'MyPlanner/base.html' %}
+
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'MyPlanner/css/visitorform.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container py-5">
+
+    <h1 id="logintitle">Login</h1>
+
+    {% if form.errors %}
+        <p>Gebruikersnaam en wachtwoord komen niet overeen. Probeer opnieuw.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Uw account is niet gemachtigd om deze pagina te bijken. Om de pagina toch te bekijken login met een account that genoeg rechten heeft.</p>
+        {% else %}
+            <p>Login is vereist.</p>
+        {% endif %}
+    {% endif %}
+
+    <form id="visitorform" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table id="logintable">
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <input id="loginbutton" type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a id="resetlink" href="{% url 'password_reset' %}">Wachtwoord vergeten?</a></p>
+    </div>
+
+{% endblock %}

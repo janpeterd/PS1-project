@@ -1,0 +1,54 @@
+{% extends 'MyPlanner/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'MyPlanner/css/visitorform.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container py-5">
+    <form id="visitorform" method="POST">
+        <fieldset>
+            <legend id="legend">Bezoekersaanvraag Bezoekerscentrum Pas-sage</legend>
+            <p> Groepen, verenigingen en scholen kunnen in het OPZ-bezoekerscentrum Pas-sage op een attractieve manier
+                meer informatie krijgen over het verleden, het heden en de toekomst van de psychiatrische zorg in Geel.
+                Uniek aan dit project is dan ook dat ervaringsdeskundigen zelf bij de realisatie van het
+                bezoekerscentrum betrokken zijn en mee de schouders zetten onder de uitbating. Hun getuigenissen vormen
+                een essentieel deel van het bezoekerscentrum. Ze ontvangen u graag samen met andere vrijwilligers.</p>
+            <p> Via dit formulier kunt u een bezoek aanvragen.</p>
+            <p> Houd er rekening mee dat het tot 5 dagen kan duren voordat u een bevestigingsmail of verdere informatie
+                ontvangt.</p>
+            <p> Gelieve ruim op voorhand uw aanvraag in te dienen.</p>
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div{% with classes=field.css_classes %}{% if classes %} class="{{ classes }}" {% endif %}{% endwith %}>
+                {{ field.label_tag }}
+                {% if field.field.required %}<span class="required">*</span>{% endif %}
+                {% if field.help_text %}
+                <p class="helptext">{{ field.help_text|safe }}</p>
+                {% endif %}
+                {{ field }}
+                {% if field.errors %}
+                <div id="bootstrap_error" class="alert alert-danger">
+                    {% for error in field.errors %}
+                    {{ error|escape }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+</div>
+{% endfor %}
+<input type="submit" class="btn btn-primary my-5" value="Indienen">
+</fieldset>
+</form>
+</div>
+
+<script>
+    window.addEventListener("load", () => {
+        if (document.querySelector('#bootstrap_error')) {
+            document.querySelector('#bootstrap_error').scrollIntoView();
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <style>
+
+    #guide-button {
+      display: block;
+      background-color: #217998;
+      color: white;
+      font-family: sans-serif;
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      padding: 30px;
+      max-width: 300px;
+      text-decoration: none;
+      border-radius: 15px;
+      transition: 1s;
+    }
+
+    #guide-button:visited {
+        color: white;
+    }
+
+    #guide-button:hover {
+        background-color: red;
+    }
+
+
+    </style>
+</head>
+<body>
+  <p>
+    Beste gidsen<br>
+  </p>
+  <br>
+
+  <p>
+    Er is zonet een nieuwe aanvraag gedaan voor een museumbezoek op {{new_object.datum}} om {{new_object.tijdstip}}.
+  </p>
+
+  <p>
+    Details:
+  </p>
+
+  <ul>
+        <li>boekingsnummer: {{new_object.id}}</li>
+        <li>gekozen module: {{new_object.module}}</li>
+        <li>datum: {{new_object.datum}}</li>
+        <li>tijdstip: {{new_object.tijdstip}}</li>
+        <li>naam: {{new_object.groepsnaam}}</li>
+        <li>contactpersoon: {{new_object.voornaamContactpersoon}} {{new_object.familienaamContactpersoon|upper}}</li>
+        <li>e-mailadres: {{new_object.emailContactpersoon}}</li>
+        <li>telefoonnummer: {{new_object.telContactpersoon}}</li>
+        {% if new_object.isSchool %}
+            <li>school: ja</li>
+            <li>onderwijsniveau: {{new_object.onderwijsniveau}}</li>
+            <li>studierichting: {{new_object.studierichting}}</li>
+            <li>(studie)jaar: {{new_object.studiejaar}}</li>
+        {% else %}
+            <li>school: nee</li>
+        {% endif %}
+        <li>aantal personen: {{new_object.aantalPersonen}}</li>
+        {% if new_object.heeftBeperkteMobiliteit %}
+            <li>beperkte mobiliteit: ja</li>
+        {% else %}
+            <li>beperkte mobiliteit: nee</li>
+        {% endif %}
+        {% if new_object.lunchVooruitzicht %}
+        <li>eigen lunch in 't Vooruitzicht: ja</li>
+        {% else %}
+        <li>eigen lunch in 't Vooruitzicht: nee</li>
+        {% endif %}
+        </ul>
+
+        <p>
+          Geef jezelf op als gids via <a href="{{assign_guide_link}}">{{assign_guide_link}}</a>.
+        </p>
+
+        <p>
+          Wanneer je na een bespreking met de andere gidsen zeker weet dat er niemand beschikbaar is om dit bezoek te gidsen, kun je op onderstaande link klikken om dat aan de aanvrager te laten weten. Dit gebeurt automatisch als er na 5 dagen nog geen gids is toegewezen voor dit bezoek.
+          <a href="{{domain}}/archive-and-notify/{{new_object.id}}">{{domain}}/archive-and-notify/{{new_object.id}}</a>
+        </p>
+
+      <br>
+    <p>
+        Met vriendelijke groeten<br>
+        Het boekingssysteem<br>
+        
+    </p>
+
+</body>

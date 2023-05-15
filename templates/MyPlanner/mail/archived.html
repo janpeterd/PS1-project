@@ -1,0 +1,28 @@
+{% load static %}
+{% block content %}
+    <p>
+        Beste meneer/mevrouw {{chosen_visit.familienaamContactpersoon}}<br>
+    </p>
+    <br>
+
+    <p>
+        Op {{chosen.visit.tijdstipAanvraag}} deed u een aanvraag om Bezoekerscentrum Pas-sage te bezoeken. Helaas is er geen gids beschikbaar op het gevraagde moment.
+    </p>
+
+    <p>
+        We nodigen u graag uit om een <a href="{{domain}}">nieuwe aanvraag</a> in te dienen.
+    </p>
+
+    <p>
+        Bedankt voor uw begrip en hopelijk tot snel!<br>
+    </p>
+    <br>
+
+    <p>
+        Met vriendelijke groeten<br>
+        Bezoekerscentrum Pas-sage, OPZ Geel<br>
+        <a href="mailto:pas-sage@opzgeel.be">pas-sage@opzgeel.be</a><br>
+        <a href="tel:014579245">014 57 92 45</a>
+        
+    </p>
+{% endblock %}

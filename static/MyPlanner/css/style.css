@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Condensed&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar_info_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#login_info_nav {
+  flex: 1 1 100%;
+  font-size: 13px;
+  text-align: center;
+  margin: auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  margin-bottom: 25px;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #f4f5f6;
+}
+
+.navbar {
+  color: #217998;
+}
+
+.navbar .navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  color: black !important;
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+.navbar a,
+.logo {
+  font-size: 17px;
+  color: #217998;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #217998;
+  color: #fff;
+}
+
+#navbarlogo {
+  background-color: transparent;
+}
+
+#navbarlogo:hover {
+  background-color: transparent;
+  color: #217998;
+}
