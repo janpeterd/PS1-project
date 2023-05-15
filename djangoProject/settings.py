@@ -21,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-5qfrysuwe=*(zoa8j(duiavkx=1$-o8bu(km#%j6noh+l1m@*q"
+# SECRET_KEY = "django-insecure-5qfrysuwe=*(zoa8j(duiavkx=1$-o8bu(km#%j6noh+l1m@*q"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['ps-1-project.vercel.app', 'django-project-planner-janpeterd.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    "ps-1-project.vercel.app",
+]
 
 
 # Application definition
@@ -57,8 +60,7 @@ ROOT_URLCONF = "djangoProject.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -81,11 +83,11 @@ WSGI_APPLICATION = "djangoProject.wsgi.app"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'postgres',
-        "USER": 'postgres',
-        "PASSWORD": 'nWC0HoRyfH,rfL4T7C',
-        "HOST": 'db.afqkzkotdnwmdxduqjdq.supabase.co',
-        "PORT": '5432',
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "nWC0HoRyfH,rfL4T7C",
+        "HOST": "db.afqkzkotdnwmdxduqjdq.supabase.co",
+        "PORT": "5432",
     }
 }
 
@@ -114,9 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "nl-NL"
 
-LANGUAGES = (
-    ('nl', _('Dutch')),
-)
+LANGUAGES = (("nl", _("Dutch")),)
 
 
 TIME_ZONE = "Europe/Brussels"
@@ -124,13 +124,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-FORMAT_MODULE_PATH = [
-    'MyPlanner.formats'
-]
+FORMAT_MODULE_PATH = ["MyPlanner.formats"]
 
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale/',
+    BASE_DIR / "locale/",
 ]
 
 
@@ -146,11 +144,10 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "janpeter.dhalle@gmail.com"
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-
-EMAIL_PORT = 587
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_USE_TLS = True
 
 if os.environ.get("VERCEL"):
