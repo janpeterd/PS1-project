@@ -29,6 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "ps-1-project.vercel.app",
+    ".vercel.app",
 ]
 
 
