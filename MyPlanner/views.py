@@ -1,4 +1,5 @@
 """Module containing all views for the MyPlanner app."""
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.core.mail import send_mail
@@ -13,12 +14,7 @@ from django.core.management import call_command
 from django.contrib.auth.models import Group, User
 
 
-# TODO: TRANSLATE ALL USER VIEWS TO DUTCH
-
-# Some variables
-
-# domain = 'http://localhost:8000'
-domain = "https://django-project-planner-janpeterd.vercel.app"
+domain = "https://ps-1-project.vercel.app/"
 
 
 def getGuideEmails():
@@ -41,7 +37,6 @@ def index(request):
     return render(request, "MyPlanner/index.html")
 
 
-# TODO: in production, change the localhost to the actual domain name
 def form(request):
     """View function for the form page of site."""
     form = forms.GroupVisitForm()
@@ -444,6 +439,7 @@ def edit_visit(request, id):
 def checkvisits(request):
     call_command("checkvisits")
     print("Checkvisits called")
+    return JsonResponse({"message": "Checkvisits called"})
 
 
 @staff_member_required
