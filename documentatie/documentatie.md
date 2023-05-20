@@ -95,3 +95,5 @@ Beter is om de gids als inactief in te stellen via het admin-paneel. Een inactie
 #### Modules
 
 Het museum biedt verschillende programma's aan in de vorm van modules. Deze modules kunnen verwijderd, aangepast en toegevoegd worden via het admin-paneel.
+
+![modules](./img/modules.png)
