@@ -1,22 +1,84 @@
-# Museum visit planner (work in progress)
+# Boekingssysteem museum
 
-This is a web-application that helps you plan your visit to a museum. It will make it easier for visitor and organizer to plan the visit.
+Deze repo bevat de code voor een webapplicatie geschreven in Django. Deze is ontwikkeld met als doel het hele boekingsproces voor een bezoek aan een museum voor een groep met gids te vergemakkelijken.
 
-It is made as a group project for school for a small museum in my area. 
+Het is geschreven als eindproject voor het vak _Professional Skills_ met als klant het bezoekerscentrum _Pas-sage_ van _OPZ Geel_.
 
-_\*Not intended for general usage, this is our first time working with this framework.\*_
+**Meer informatie en uitleg** is te lezen in [de documentatie](./documentatie/documentatie.md).
 
-## Idea
-1. Visitor fill in form and choose date/time
-2. E-mails get send to all guides
-3. Guides confirm by pressing butten in E-mail, if no one confirms after 5 days the visitor gets notified
-4. Guide gets assigned to visit.
+## Gebruikte technologieën
 
-### Technologies used
-* Django (framework)
-* Python (language)
-* Cron (scheduled background tasks)
-* HTML/CSS (frontend)
-* Bootstrap (frontend)
-* Postgres (databse)
-  * Supabase (cloud database)
+- _Python_ (programmeertaal)
+- _Django_ (webframework)
+- _Cron_ (achtergrondtaken)
+- _HTML/CSS_ (frontend)
+- _Bootstrap_ (frontend)
+- _Postgres_ (database)
+- _Supabase_ (database hosting)
+- _Vercel_ (serverless hosting)
+
+## Development installatie
+
+1. Clone de repo
+
+```bash
+git clone https://github.com/janpeterd/PS1-project.git
+
+```
+
+2. Maak een virtuele Python-omgeving aan
+
+```bash
+cd PS1-project/
+python3 -m venv venv
+```
+
+3. activeer virtuele Python-omgeving
+   Linux:
+
+```bash
+source venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+venv\Scripts\activate
+```
+
+4. Installeer Python packages met pip
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Database migratie/setup
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+```
+
+6. [settings.py](./djangoProject/settings.py) instellen voor development
+   - Voor deze stap moet je een .env file toevoegen met gegevens die met de commando `python os.environ.get("NAME")` opgehaald worden.
+     OF
+   - verander alle lijnen met `python os.environ.get("")` door je eigen gegevens (database,e-mail, ...)
+
+```python
+# voeg localhost toe aan vertrouwde domeinen
+ALLOWED_HOSTS = ["localhost"]
+
+# zie errors in browser
+DEBUG = TRUE
+```
+
+7. Start development server
+
+```bash
+python3 manage.py runserver
+```
+
+### Deploy Vercel
+
+Om naar Vercel te deployen moet je deze repo importeren in Vercel en alle Environment Variables invullen.
