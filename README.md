@@ -34,7 +34,8 @@ python3 -m venv venv
 ```
 
 3. activeer virtuele Python-omgeving
-   Linux:
+
+Linux:
 
 ```bash
 source venv/bin/activate
@@ -52,16 +53,8 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-5. Database migratie/setup
-
-```bash
-python3 manage.py makemigrations
-python3 manage.py migrate
-
-```
-
-6. [settings.py](./djangoProject/settings.py) instellen voor development
-   - Voor deze stap moet je een .env file toevoegen met gegevens die met de commando `python os.environ.get("NAME")` opgehaald worden.
+5. [settings.py](./djangoProject/settings.py) instellen voor lokale development
+   - Voor deze stap moet je een .env file toevoegen met gegevens (databaseinformatie, django-secret-key, e-mailgegevens) die met de commando `python os.environ.get("NAME")` opgehaald worden.
      OF
    - verander alle lijnen met `python os.environ.get("")` door je eigen gegevens (database,e-mail, ...)
 
@@ -73,6 +66,14 @@ ALLOWED_HOSTS = ["localhost"]
 DEBUG = TRUE
 ```
 
+6. Database migratie/setup
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+```
+
 7. Start development server
 
 ```bash
@@ -81,4 +82,4 @@ python3 manage.py runserver
 
 ### Deploy Vercel
 
-Om naar Vercel te deployen moet je deze repo importeren in Vercel en alle Environment Variables invullen.
+Om naar Vercel te deployen moet je deze repo importeren in Vercel en alle _environment variables_ invullen (of _.env-bestand_ plakken).
