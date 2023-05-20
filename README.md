@@ -4,7 +4,7 @@ Deze repo bevat de code voor een webapplicatie geschreven in Django. Deze is ont
 
 Het is geschreven als eindproject voor het vak _Professional Skills_ met als klant het bezoekerscentrum _Pas-sage_ van _OPZ Geel_.
 
-**Meer informatie en uitleg** is te lezen in [de documentatie](./documentatie/documentatie.md). Of in [(pdf-formaat)](./documentatie/documentatie.pdf)
+**Meer informatie en uitleg** is te lezen in [de documentatie](./documentatie/documentatie.md). Of in [(pdf-formaat)](./documentatie/documentatie.pdf).
 
 ## Gebruikte technologieën
 
