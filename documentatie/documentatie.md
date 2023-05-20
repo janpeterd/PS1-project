@@ -1,10 +1,3 @@
----
-title: Documentatie boekingssysteem
-author: Jan-Peter Dhallé
-pagesize: a4
-fontsize: 12pt
----
-
 # Documentatie boekingssysteem
 
 ## Concept
