@@ -23,7 +23,9 @@ def getGuideEmails():
     # This list is used to send emails to all guides
     guide_emails = []
     # Get all guide objects, that have a login associated
-    guide_logins = models.Guide.objects.filter(login__isnull=False)
+    guide_logins = models.Guide.objects.filter(
+        login__is_active=True, login__isnull=False
+    )
     print("guide logins", guide_logins)
     for guide in guide_logins:
         email = guide.login.email
