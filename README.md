@@ -35,7 +35,7 @@ python3 -m venv venv
 
 3. activeer virtuele Python-omgeving
 
-Linux:
+MacOS en Linux:
 
 ```bash
 source venv/bin/activate
@@ -79,6 +79,7 @@ python3 manage.py migrate
 ```bash
 python3 manage.py runserver
 ```
+
 Normaal gezien is deze nu zichtbaar op [localhost:8000](http://localhost:8000).
 
 ### Deploy Vercel

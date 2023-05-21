@@ -2,7 +2,7 @@ from django import forms
 from django.forms import TimeInput, DateInput, TextInput, NumberInput, PasswordInput
 from datetime import timedelta, datetime
 from django.contrib.auth.models import User
-from MyPlanner.models import GroupVisit
+from MyPlanner.models import GroupVisit, Guide
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
@@ -167,6 +167,12 @@ class ChangeGuideForm(forms.ModelForm):
         model = models.GroupVisit
         fields = ["toegewezenGids"]
         labels = {"toegewezenGids": "Verander de gids voor het bezoek"}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["toegewezenGids"].queryset = Guide.objects.filter(
+            login__is_active=True
+        )
 
 
 # This form is for the guide to fill in

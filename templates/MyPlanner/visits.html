@@ -131,15 +131,18 @@
     <p class="helptext" id="edit_visit">
         <a href="/bezoek-bewerken/{{ chosen_visit.id }}"><i>Bewerk</i> dit bezoek</a>
     </p>
+
+    {% if not chosen_visit.gearchiveerd %}
     <p class="helptext" id="archive">
         <a href="/archive-and-notify/{{ chosen_visit.id }}"><i>Archiveer</i> dit bezoek</a>
     </p>
+    {% endif %}
     <!-- only show delete if visit is already archived -->
     {% if chosen_visit.gearchiveerd %}
     <p class="helptext" id="delete">
         <a href="/bezoek-verwijderen/{{ chosen_visit.id }}"
             onclick="return confirm('Weet je zeker dat je de huidige gids: dit bezoek definitief wil verwijderen?')"><i>Verwijder</i>
-            dit bezoek</a>
+            dit bezoek definitief</a>
     </p>
     {% endif %}
 </aside>
